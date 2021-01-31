@@ -1,9 +1,10 @@
 package web
 
 import (
-	"air/order/schame"
+	auth1 "air/order/proto"
 	"air/order/service"
 	"air/order/utils"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -17,7 +18,7 @@ func (o *orderAuth) init() {
 }
 
 func (o *orderAuth) login(c *gin.Context) {
-	request := new(schame.AuthRequest)
+	request := new(auth1.LoginRequest)
 	if err := c.ShouldBindJSON(request); err != nil {
 		utils.HttpResponse(c, 1, "params error", nil)
 		return
